@@ -7,6 +7,6 @@ import (
 )
 
 type NewsService interface {
-	ExtractNews(ctx context.Context)
-	FindById(ctx context.Context, categoryId int) web.NewsResponse
+	ExtractNews(ctx context.Context, url string)
+	FindNewsByID(ctx context.Context, categoryId int) web.NewsResponse
 }

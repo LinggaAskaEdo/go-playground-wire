@@ -20,3 +20,6 @@ cache:
 server:
   serverHost: "localhost"
   serverPort: "3000"
+
+rss:
+  rssURL: "https://jambi.antaranews.com/rss/terkini.xml"

@@ -6,10 +6,15 @@ import (
 
 	"github.com/go-co-op/gocron/v2"
 
+	"github.com/linggaaskaedo/go-playground-wire/model/common"
 	"github.com/linggaaskaedo/go-playground-wire/service"
 )
 
-func NewScheduler(newsService service.NewsService) (gocron.Scheduler, error) {
+type SchedulerOptions struct {
+	Config common.Configuration
+}
+
+func NewScheduler(newsService service.NewsService, opts *SchedulerOptions) (gocron.Scheduler, error) {
 	ctx := context.Background()
 
 	s, err := gocron.NewScheduler()
@@ -24,22 +29,12 @@ func NewScheduler(newsService service.NewsService) (gocron.Scheduler, error) {
 		gocron.NewTask(
 			newsService.ExtractNews,
 			ctx,
+			opts.Config.RSS.RssURL,
 		),
-		// gocron.OneTimeJob(
-		// 	gocron.OneTimeJobStartImmediately(),
-		// ),
-		// gocron.NewTask(
-		// 	newsService.ExtractNews,
-		// 	ctx,
-		// ),
 	)
 	if err != nil {
 		return s, err
 	}
-
-	// fmt.Println(j1.ID())
-
-	// s.Start()
 
 	return s, nil
 }

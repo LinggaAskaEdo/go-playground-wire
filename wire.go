@@ -51,7 +51,8 @@ func InitializedScheduler(configuration common.Configuration) (gocron.Scheduler,
 		wire.Bind(new(repository.NewsRepository), new(*repository.NewsRepositoryImpl)),
 		service.NewNewsService,
 		wire.Bind(new(service.NewsService), new(*service.NewsServiceImpl)),
-		config.NewScheduler,
+		wire.NewSet(wire.Struct(new(config.SchedulerOptions), "*"), config.NewScheduler),
+		// config.NewScheduler,
 	)
 
 	return nil, nil

@@ -6,6 +6,7 @@ type Configuration struct {
 	Database DatabaseConfiguration
 	Cache    CacheConfiguration
 	Server   ServerConfiguration
+	RSS      RSSConfiguration
 }
 
 type TokenConfiguration struct {
@@ -36,4 +37,8 @@ type CacheConfiguration struct {
 type ServerConfiguration struct {
 	ServerHost string
 	ServerPort string
+}
+
+type RSSConfiguration struct {
+	RssURL string
 }

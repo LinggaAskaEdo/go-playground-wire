@@ -67,7 +67,10 @@ func InitializedScheduler(configuration common.Configuration) (gocron.Scheduler,
 	}
 	validate := config.NewValidator()
 	newsServiceImpl := service.NewNewsService(newsRepositoryImpl, db, client, validate)
-	scheduler, err := config.NewScheduler(newsServiceImpl)
+	schedulerOptions := &config.SchedulerOptions{
+		Config: configuration,
+	}
+	scheduler, err := config.NewScheduler(newsServiceImpl, schedulerOptions)
 	if err != nil {
 		return nil, err
 	}

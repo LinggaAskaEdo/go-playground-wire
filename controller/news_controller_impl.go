@@ -21,12 +21,12 @@ func NewNewsController(newsService service.NewsService) *NewsControllerImpl {
 	}
 }
 
-func (controller *NewsControllerImpl) FindById(writer http.ResponseWriter, request *http.Request, params httprouter.Params) {
+func (controller *NewsControllerImpl) FindNewsByID(writer http.ResponseWriter, request *http.Request, params httprouter.Params) {
 	newsID := params.ByName("newsID")
 	id, err := strconv.Atoi(newsID)
 	helper.PanicIfError(err)
 
-	newsResponse := controller.NewsService.FindById(request.Context(), id)
+	newsResponse := controller.NewsService.FindNewsByID(request.Context(), id)
 	webResponse := web.WebResponse{
 		Code:   200,
 		Status: "OK",
