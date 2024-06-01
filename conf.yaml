@@ -1,0 +1,22 @@
+token: 
+  auth: "4%[$6EhwEaTbL2>tA=4?nU6>aW5La8n9#"
+  
+database:
+  dbUser: "root"
+  dbPassword: "a5k4CooL"
+  dbHost: "localhost"
+  dbPort: "3306"
+  dbName: "play-db"
+  dbMaxIdleConns: 5
+  dbMaxOpenConns: 20
+  dbConnMaxLifetime: 60
+  dbConnMaxIdleTime: 10
+
+cache:
+  cacheHost: "localhost"
+  cachePort: "6379"
+  cachePassword: ""
+
+server:
+  serverHost: "localhost"
+  serverPort: "3000"
